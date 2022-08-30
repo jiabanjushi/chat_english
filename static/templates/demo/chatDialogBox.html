@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对话框</title>
+</head>
+<style>
+    .chatDialogBox {
+        background-color: rgb(255,255,255);
+        color: #000;
+        border: 1px solid rgb(237,237,237);
+        min-height: 20px;
+        padding: 8px 15px;
+        word-break: break-all;
+        position: relative;
+        border-radius: 5px;
+        display: inline-block;
+        font-size: 14px;
+    }
+    .chatDialogBox:before,.chatDialogBox:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width:0;
+        height: 0;
+        border: 6px solid transparent;
+        border-right-color: rgba(255,255,255,1);
+        left: -11px;
+        top: 10px;
+        z-index:1;
+    }
+    .chatDialogBox:after {
+        left: -12px;
+        border-right-color: rgb(237,237,237);
+        z-index:0;
+    }
+</style>
+<body>
+<div class="chatDialogBox">你好</div>
+</body>
+</html>

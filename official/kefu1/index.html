@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>GOFLY-在线客服系统-独立部署的客服系统源码-极简强大Golang语言开发在线客服</title>
+    <meta name="keywords" content="GOFLY,在线客服,智能客服,在线智能客服系统,在线客服系统源码,客服软件,在线客服软件,客服管理,客服管理系统,全渠道客服系统" />
+    <meta name="description" content="GOFLY客服,GOFLY开源客服，一套可独立私有化部署的免费开源客服系统，网站在线客服系统，下载zip解压即可，仅依赖MySQL数据库，是一个开箱即用的网页在线客服，适合PHP/GO程序员使用." />
+
+    <link rel="stylesheet" href="bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+
+
+<nav id="nav">
+    <div class="container">
+        <a href="/" class="logo">
+            <img alt="GOFLY在线客服" src="logo.png">
+        </a>
+
+        <ul class="nav-links">
+            <li class="hidden-xs">
+                <a href="" target="_blank" >登录</a>
+            </li>
+            <li class="hidden-xs">
+                <a href="h">手机版登录</a>
+            </li>
+
+            <li class="hidden-sm hidden-md hidden-lg">
+                <button id="menu-btn" title="Menu" aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle navigation">
+                    <svg class="svg-inline svg-inline-large" viewBox="0 0 448 512" aria-hidden="true"><path fill="currentColor" d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"></path></svg>
+                </button>
+            </li>
+        </ul>
+
+        <div class="nav-search-overlay" id="search-overlay">
+            <div class="search-input-group" role="search">
+                <input id="search-input" name="search" type="search" placeholder="Search" autocomplete="off" aria-label="Search query">
+                <button id="search-close-btn" title="Close this search field and clear results (Esc)" aria-keyshortcuts="Escape">
+                    <svg class="svg-inline" viewBox="0 0 352 512" aria-hidden="true"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"></path></svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<div id="search-results" class="container">
+    <div id="results-placeholder"></div>
+    <div id="accessible-search-summary" aria-live="assertive" class="sr-only"></div>
+</div>
+
+<div id="mobile-menu" class="hidden-sm hidden-md hidden-lg container">
+    <ul class="menu">
+        <li><a href="/" class="active">首页</a></li>
+
+
+
+
+
+
+        <li>
+            <a
+                    href="/login" target="_blank"
+
+            >
+                登录
+            </a>
+        </li>
+        <li>
+            <a href="">手机版登录</a>
+        </li>
+
+
+
+
+        <li>
+            <a href="/reg" target="_blank">
+                注册
+            </a>
+        </li>
+
+
+
+    </ul>
+</div>
+
+<div id="content">
+    <div id="splash">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="hgroup">
+                        <h1>极致简约实用的GOFLY在线客服系统</h1>
+
+                    </div>
+
+                    <p>
+                        <a class="btn" target="_blank" href="">下载部署</a>
+                        <br>
+
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="features">
+        <div class="container">
+            <p>
+                <a href="">
+                    <img class="screenshot" src="main.jpg" decoding="async" alt="The Lounge app screenshot">
+                </a>
+            </p>
+
+            <div class="row">
+                <div class="col-sm-4 feature">
+                    <h3>多渠道接入，多样化沟通</h3>
+                    <p>移动APP, 网页咨询, 图片即刻复制发送，语音，表情，视频，文件多元素沟通.</p>
+                </div>
+                <div class="col-sm-4 feature">
+                    <h3>多客服对话分配</h3>
+                    <p>支持客服分流/转接/，多客服沟通，到达信息精准传达，无须客户沟通重复内容.</p>
+                </div>
+                <div class="col-sm-4 feature">
+                    <h3>访客信息有效转化</h3>
+                    <p>实时可获取访客浏览动态，全方位了解访客.</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 feature">
+                    <h3>Golang+vue结构开发</h3>
+                    <p>语言的优势可以轻松应对高并发问题，访客再多也不怕！</p>
+                </div>
+                <div class="col-sm-4 feature">
+                    <h3>独立部署无任何限制</h3>
+                    <p>无坐席数限制，无域名限制，无服务器限制</p>
+                </div>
+                <div class="col-sm-4 feature">
+                    <h3>轻松部署</h3>
+                    <p>一段代码，一个链接，自由简单，轻松部署</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<footer class="cfo-footer">
+    <div class="cfo-footer__container">
+
+        <div class="cfo-footer__logo">
+            <a href="" title="GOFLY在线客服"><img width="100px" alt="GOFLY在线客服" src="logo.png" title="GOFLY在线客服"></a>
+        </div>
+
+        <ul class="cfo-footer__site-links">
+            <li><a href="">登录</a></li>
+            <li><a href="">注册</a></li>
+        </ul>
+
+
+
+        <p class="cfo-footer__copyright">
+            Copyright © 2020 - 2021 <a target="_blank" href="">GOFLY</a>-GOFLY在线客服 <a href="https://beian.miit.gov.cn/" target="_blank">京ICP备17033956号-1</a>
+        </p>
+    </div>
+</footer>
+<!--对接客服代码,安装完成后更改成自己的域名或IP，下面js文件路径以及GOFLY_URL都要改-->
+
+<script>
+    GOFLY.init({
+        GOFLY_URL:"",
+        GOFLY_KEFU_ID: "taoshihan",
+        GOFLY_ENT: "5",
+        GOFLY_LANG:"cn",
+        GOFLY_AUTO_OPEN:true,
+    });
+</script>
+<!--//对接客服代码-->
+
+</body>
+</html>

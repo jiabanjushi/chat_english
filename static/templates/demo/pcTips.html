@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/layui/2.6.8/css/layui.css">
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<style>
+    .lineBox{
+        position: fixed!important;
+        bottom: 30%;
+        right: 0px;
+        left: auto;
+        z-index: 999999;
+    }
+    .lineBox .lineItem{
+        cursor: pointer;
+        width: 50px;
+        height: 55px;
+        background: #2d8cf0;
+        margin-bottom: 1px;
+        color: #fff;
+        line-height: 55px;
+        text-align: center;
+        position: relative;
+    }
+    .lineItem .layui-icon{
+        font-size: 26px;
+    }
+    .lineItem:hover{
+        opacity: 0.8;
+    }
+    .lineTop{
+        margin-top: 4px;
+    }
+    .lineTip{
+        border-radius: 2px;
+        box-shadow: 1px 1px 3px rgba(0,0,0,.2);
+        position: absolute;
+        top:0px;
+        right: 59px;
+        color: #000;
+        padding: 0 10px;
+        background: #fff;
+        display: none;
+    }
+    .lineTip:before, .lineTip:after {
+        content: "";
+        display: block;
+        position: absolute;
+        width: 0;
+        height: 0;
+        border: 8px solid transparent;
+        border-left-color: rgba(255,255,255,1);
+        right: -16px;
+        top: 10px;
+        z-index: 1;
+    }
+
+    .lineTip:after{
+        right: -18px;
+        border-left-color: rgb(237,237,237);
+        z-index: 0;
+    }
+    .lineWechat{
+        width: 100px;
+        height: 100px;
+        padding: 0px;
+    }
+</style>
+<body>
+<div class="lineBox">
+    <div class="lineItem">
+        <i class="layui-icon">&#xe606;</i>
+    </div>
+    <div class="lineItem">
+        <i class="layui-icon">&#xe677;</i>
+        <div class="lineTip lineWechat">
+            <img class="lineWechat" src="https://img2020.cnblogs.com/blog/726254/202111/726254-20211103001029429-1411405207.png"/>
+        </div>
+    </div>
+    <div class="lineItem">
+        <i class="layui-icon">&#xe676;</i>
+        <div class="lineTip">
+            QQ:630892807
+        </div>
+    </div>
+    <div class="lineItem">
+        <i class="layui-icon">&#xe626;</i>
+        <div class="lineTip">
+            QQ:630892807
+        </div>
+    </div>
+    <div class="lineItem lineTop" id="launchTopButton">
+        <i class="layui-icon">&#xe604;</i>
+    </div>
+</div>
+<script>
+    $(function(){
+        $("#launchTopButton").click(function() {
+            $('body,html').scrollTop(0);
+        });
+        $(".lineItem").hover(function() {
+            $(".lineTip").hide();
+            $(this).find(".lineTip").show();
+        });
+    });
+</script>
+</body>
+</html>

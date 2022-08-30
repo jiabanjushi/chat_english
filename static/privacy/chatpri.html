@@ -1,0 +1,95 @@
+<html lang="zh-CN" data-redeviation-bs-uid="105975"><script id="allow-copy_script">(function agent() {
+    let unlock = false
+    document.addEventListener('allow_copy', (event) => {
+      unlock = event.detail.unlock
+    })
+
+    const copyEvents = [
+      'copy',
+      'cut',
+      'contextmenu',
+      'selectstart',
+      'mousedown',
+      'mouseup',
+      'mousemove',
+      'keydown',
+      'keypress',
+      'keyup',
+    ]
+    const rejectOtherHandlers = (e) => {
+      if (unlock) {
+        e.stopPropagation()
+        if (e.stopImmediatePropagation) e.stopImmediatePropagation()
+      }
+    }
+    copyEvents.forEach((evt) => {
+      document.documentElement.addEventListener(evt, rejectOtherHandlers, {
+        capture: true,
+      })
+    })
+  })()</script><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title></title>
+
+<link rel="stylesheet" href="./chatpri/css/message.css">
+<link rel="stylesheet" href="./chatpri/style.css">
+<script src="./chatpri/js/message.min.js"></script>
+</head>
+<body _c_t_common="1" _c_t_j1="1">
+
+<div class="materialContainer">
+	<div class="box">
+		<div class="title">客服中转</div>
+		<div class="input">
+			<label for="privePass">秘钥</label>
+			<input type="text" name="privePass" id="privePass">
+			<span class="spin"></span>
+		</div>
+<!--		<div class="input">-->
+<!--			<label for="pass">密码</label>-->
+<!--			<input type="password" name="pass" id="pass">-->
+<!--			<span class="spin"></span>-->
+<!--		</div>-->
+		<div class="button login">
+			<button>
+				<span>跳转客服</span>
+<!--				<i class="fa fa-check"></i>-->
+			</button>
+		</div>
+<!--		<a href="javascript:" class="pass-forgot">忘记密码？</a>-->
+	</div>
+
+<!--	<div class="overbox">-->
+<!--		<div class="material-button alt-2">-->
+<!--			<span class="shape"></span>-->
+<!--		</div>-->
+<!--		<div class="title">注册</div>-->
+<!--		<div class="input">-->
+<!--			<label for="regname">用户名</label>-->
+<!--			<input type="text" name="regname" id="regname">-->
+<!--			<span class="spin"></span>-->
+<!--		</div>-->
+<!--		<div class="input">-->
+<!--			<label for="regpass">密码</label>-->
+<!--			<input type="password" name="regpass" id="regpass">-->
+<!--			<span class="spin"></span>-->
+<!--		</div>-->
+<!--		<div class="input">-->
+<!--			<label for="reregpass">确认密码</label>-->
+<!--			<input type="password" name="reregpass" id="reregpass">-->
+<!--			<span class="spin"></span>-->
+<!--		</div>-->
+<!--		<div class="button">-->
+<!--			<button>-->
+<!--				<span>注册</span>-->
+<!--			</button>-->
+<!--		</div>-->
+<!--	</div>-->
+
+</div>
+
+<script src="./chatpri/jquery.min.js"></script>
+<script src="./chatpri/index.js"></script>
+
+
+<app-frame-105975 id="redeviation-bs-sidebar" class="notranslate" aria-hidden="true" data-theme="default" data-pos="left"></app-frame-105975><div id="redeviation-bs-indicator" data-theme="default" class="redeviation-bs-fullHeight redeviation-bs-visible" data-pos="left" style="height: 100%; top: 0%;"><div><span></span></div></div><div id="automa-palette"></div></body></html>

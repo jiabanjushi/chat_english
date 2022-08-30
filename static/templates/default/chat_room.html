@@ -1,0 +1,84 @@
+<html lang="cn">
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;" name="viewport" />
+    <meta name="keywords" content="开源客服系统,golang在线客服,免费客服系统,go语言在线聊天工具,gofly,GOFLY客服系统"/>
+    <meta name="description" content="golang开发的开源免费客服系统,可独立部署客服系统,支持文字/表情/图片/文件发送,支持快捷回复,支持IP黑名单,展示访客信息,后台权限控制"/>
+    <meta name="author" content="GOFLY">
+    <title>互动聊天-GO语言开源客服系统-GOFLY</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.1/theme-chalk/index.min.css">
+    <script src="https://cdn.staticfile.org/vue/2.6.11/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/element-ui/2.15.1/index.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+    <script src="/static/js/functions.js?v=0.4.1"></script>
+    <link rel="stylesheet" href="/static/css/front.css?v=1.0.0" />
+    <link rel="stylesheet" href="/static/css/common.css?v=0.4.1" />
+    <link rel="stylesheet" href="/static/css/icono.min.css" />
+</head>
+<body>
+<div id="app"  class="chatRoomCenter">
+    <template>
+        <!--客服代码-->
+        <div class="chatContext chatVisitorPage">
+            <div class="chatBox">
+                <el-alert
+                        style="margin:10px 0px;width: 100%"
+                        :title="chatTitle"
+                        :closable="false"
+                        type="success">
+                </el-alert>
+                <el-row :gutter="2" v-for="v in msgList" >
+                    <el-col :span="3"><el-avatar shape="square" :size="36" :src="v.avator"></el-avatar></el-col>
+                    <el-col :span="21">
+                        <div class="chatUser"><{v.name}></div>
+                        <div class="chatContent" v-html="v.content"></div>
+                    </el-col>
+                    <div class="clear"></div>
+                </el-row>
+
+            </div>
+        </div>
+        <div class="chatBoxSend">
+            <div class="iconBtns">
+                <div :title="flyLang.emotions" class="icono-smile visitorIconBtns visitorFaceBtn"></div>
+                <div class="clear"></div>
+            </div>
+            <el-input  @focus="textareaFocus" @blur="textareaBlur" v-model="messageContent"   v-on:keyup.enter.native="chatToUser" :placeholder="flyLang.textarea">
+                <el-button slot="append" :disabled="sendDisabled||messageContent==''" v-on:click="chatToUser"><{flyLang.sent}></el-button>
+            </el-input>
+            <div class="faceBox visitorFaceBox">
+                <ul class="faceBoxList">
+                    <li v-on:click="faceIconClick(i)" class="faceIcon" v-for="(v,i) in face"  :title="v.name"><img :src=v.path></li>
+                </ul>
+                <div class="clear"></div>
+            </div>
+            <div class="footContact clear">
+                <a href="https://github.com/taoshihan1991/go-fly" target="_blank"><{flyLang.copyright}></a>
+            </div>
+        </div>
+        <!--//客服代码-->
+        <audio id="chatMessageAudio">
+            <source id="chatMessageAudioSource"  />
+        </audio>
+        <audio id="chatMessageSendAudio">
+            <source id="chatMessageSendAudioSource"  />
+        </audio>
+        <div class="liker">
+            <canvas id="hearts-canvas" ></canvas>
+            <button class="btn" @click="likeHeart">
+                <svg width="24" height="24" viewBox="0 0 24 24">
+                    <path d="M12,21.35L10.55,20.03C5.4,15.36 2,12.27 2,8.5C2,5.41 4.42,3 7.5,3C9.24,3 10.91,3.81 12,5.08C13.09,3.81 14.76,3 16.5,3C19.58,3 22,5.41 22,8.5C22,12.27 18.6,15.36 13.45,20.03L12,21.35Z"></path>
+                </svg>
+            </button>
+        </div>
+    </template>
+</div>
+</body>
+<script src="/static/js/reconnecting-websocket.min.js"></script>
+<script src="/static/js/like-heart.js?v=0.4.1"></script>
+<script>
+    var LANG=checkLang();
+</script>
+<script src="/static/js/chat-lang.js?v=0.4.1"></script>
+<script src="/static/js/chat-room.js?v=0.4.1"></script>
+</html>

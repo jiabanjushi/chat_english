@@ -1,0 +1,9 @@
+#香满园 端口配置
+app:
+  name: "4545"
+  mode: "dev"
+  port: 7777
+  version: "v1"
+  white: "127.0.0.11@0.0.0.0"
+
+

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!-- Import style -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/element-plus/dist/index.css"
+    />
+    <!-- Import Vue 3 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
+    <!-- Import component library -->
+    <script src="https://cdn.jsdelivr.net/npm/element-plus"></script>
+    <style>
+        .noTouch{
+            -webkit-touch-callout:none;
+            -webkit-user-select:none;
+            -khtml-user-select:none;
+            -moz-user-select:none;
+            -ms-user-select:none;
+            user-select:none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div style="text-align: center">
+        <el-progress type="circle" :format="recoderFormat" :stroke-width="10" :percentage="recoderSecond"></el-progress>
+        <br/>
+        <audio v-show="recorderEnd" controls ref="audio" muted="muted" src="" id="audio"></audio>
+        <br/>
+        <el-button  @click="startRecoder()">开始</el-button>
+        <el-button @click="stopRecoder()">结束</el-button>
+        <el-button @click="cancelRecoder()">取消</el-button>
+        <el-button round class="noTouch" type="success" @touchstart.stop.prevent="startRecoder" @touchend.stop.prevent="stopRecoder">${talkBtnText}</el-button>
+    </div>
+</div>
+
+<script src="../../js/recoder.js"></script>
+<script>
+    const App = {
+        compilerOptions: {
+            delimiters: ['${', '}'],
+            comments: true
+        },
+        data() {
+            return {
+                recorder:null,
+                recoderSecond:0,
+                recorderAudio:null,
+                talkBtnText:"按住 说话",
+                recorderEnd:false,
+            };
+        },
+        methods: {
+//开始录音
+            startRecoder:function(e){
+                if(this.recorder){
+                    this.recorder.destroy();
+                    this.recorder=null;
+                }
+                var _this=this;
+
+                _this.recorder = new Recorder();
+                _this.recorderAudio = document.querySelector('#audio');
+                _this.recorder.start();
+                _this.recorder.onprogress = function(params) {
+                    _this.recoderSecond=parseInt(params.duration);
+                }
+                this.talkBtnText="松开 结束";
+                e.preventDefault();
+            },
+            stopRecoder:function(){
+                if(!this.recorder){
+                    return;
+                }
+                var blob=this.recorder.getWAVBlob();
+                this.recorderAudio.src = URL.createObjectURL(blob);
+                this.recorderAudio.controls = true;
+                this.talkBtnText="按住 说话";
+                this.recorderEnd=true;
+            },
+            sendRecoder:function(){
+                if(!this.recorder){
+                    return;
+                }
+                var blob=this.recorder.getWAVBlob();
+                this.talkBtnText="按住 说话";
+            },
+            cancelRecoder:function(){
+                this.recoderSecond=0;
+                if(!this.recorder){
+                    return;
+                }
+                this.recorder.destroy();
+                this.recorder=null;
+            },
+            recoderFormat(percentage){
+                return percentage+"s";
+            }
+        },
+        //属性初始化
+        created(){
+        }
+    };
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#app");
+</script>
+</body>
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>开源免费在线客服系统-GOFLY-独立部署的在线客服系统源码-网站网页在线客服系统</title>
+    <meta name="keywords" content="在线客服系统,客服系统源码,免费客服,开源在线客服" />
+    <meta name="description" content="GOFLY客服,GO-FLY开源客服，一套可独立私有化部署的免费开源客服系统，网站在线客服系统，下载zip解压即可，仅依赖MySQL数据库，是一个开箱即用的网页在线客服系统" />
+
+    {{template "index-meta" .}}
+</head>
+<body>
+
+{{template "index-nav" .}}
+
+<header class="masthead wave">
+    <div class="container">
+        <h1 class="masthead-heading text-uppercase">GOFLY 在线客服系统</h1>
+        <div class="masthead-subheading" style="font-style:normal;">基于Golang+MySQL开发，私有化部署的网页聊天即时通讯、在线客服坐席系统 (商务运营版)</div>
+        <div class="mx-auto">
+            <p class="lead mb-4">
+                2022年最新在线客服系统采用Golang+gin框架原创开发，编译运行，守护进程稳定，多协程支持超高并发。GOFLY访客端采用web响应式设计，可自动适配移动端，
+                客服端支持电脑+移动APP，网站只需嵌入一段js或分享独立聊天地址即可快速接入，完善的网站客服系统！<br/>
+                无限账户/坐席，支持多租户运营，一次购买，终身使用，无域名限制，无服务器限制！
+                支持消息预知，消息撤回，发送语音，已读未读，机器人自动回复可24小时在线客服等功能
+            </p>
+        </div>
+
+        <a   class="btn btn-info  useBtn me-3" href="h" target="_blank"><i class="bi bi-display me-1"></i>立即体验
+        </a>
+        <a href="javascript:GOFLY.showPanel();" class="btn btn-info  buyBtn"><i class="bi bi-cart-plus-fill me-1"></i>立即购买</a>
+    </div>
+</header>
+
+<div class="clear"></div>
+<div class="main">
+    <div class="preview">
+        <img alt="GOFLY在线客服"  title="GOFLY在线客服" class="jumbotron" src="static/images/index_pc.png"/>
+    </div>
+
+    <div class="container mainIntro">
+        <div class="product">
+            <h2 class="pt-4 pb-4">为什么选择GOFLY？</h2>
+            <div class="productContent">
+                <div class="productContent">
+                    <p>公告：本客服软件只提供软件产品，不涉及也不知情具体业务，禁止将本软件用于含病毒、木马、色情、赌博、诈骗、违禁用品、假冒产品、虚假信息等违法违规业务。因为业务问题导致的法律风险，请自行负责！</p>
+                </div>
+
+                <p>一、Golang很多时候被描述为“类C语言”，或者是“21世纪的C语言”。最具标志性的特点就是实现了CSP并发编程模型，可以利用到多核CPU进行异步并行，利用管道进行通信，降低开发复杂度，极大提升了运行效率</p>
+                <p>二、Goroutine是极轻量级的协程，系统线程占2M内存，Goroutine只占2k。Golang可以轻易地启动成千上万个Goroutine，用自己的调度器，比系统线程切换效率高得多。基于Channel的同步通信，也比共享内存，互斥锁等要方便的多。</p>
+                <p>三、Golang是编译型语言，可以将代码编译为二进制文件，直接运行机器码。PHP为动态脚本语言，运行时每次都需要经过zend引擎解释执行，运行效率比较低。即时通讯需要服务端支持websocket，PHP需要用的swoole扩展或wokerman，swoole扩展为c语言开发但是不能做到跨平台，wokerman框架是纯PHP开发，但是为解释执行和多进程模型运行效率低。</p>
+                <p>四、GOFLY客服充分利用以上Golang语言优点，使用Gin框架开发，零分配路由，仍然是最快的 http路由器和框架。编译后的软件安装过程不超过五分钟，即可实现与访客即时聊天功能。当前演示为商务版，你可在平台注册用户，在线试用聊天功能，商务版咨询可加微信。
+                </p>
+            </div>
+        </div>
+        <div class="product">
+            <h2 class="pt-5 pb-5">两分钟装好客服，一键下载使用</h2>
+            <p>Windows/Centos/Ubuntu/Debain/Fedora跨平台全部支持</p>
+            <p>安装包下载地址</p>
+            <pre><a href="" target="_blank">下载地址</a></pre>
+        </div>
+
+        <div class="container" >
+            <h2 class="pt-5 pb-5" name="feature"  id="feature">提供的功能简洁而不简单</h2>
+            <div class="row flex-lg-row-reverse align-items-center g-5">
+
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <label class=" d-flex gap-2 pb-3">
+                        <input class="form-check-input flex-shrink-0" type="checkbox" disabled checked="true">
+                        <span>支持多商家(多站点)
+                    <small class="d-block text-muted">
+                        支持多商家(多站点)，每个注册用户为一个商家，每个商家可以添加多个坐席子账户。
+                    </small>
+                    </span>
+                    </label>
+                    <label class=" d-flex gap-2 pb-3">
+                        <input class="form-check-input flex-shrink-0" type="checkbox" disabled checked="true">
+                        <span>不限坐席
+                    <small class="d-block text-muted">
+                        每个商家可以无限添加坐席，不限制坐席数
+                    </small>
+                    </span>
+                    </label>
+                    <label class=" d-flex gap-2 pb-3">
+                        <input class="form-check-input flex-shrink-0" type="checkbox" disabled checked="true">
+                        <span>智能分配
+                    <small class="d-block text-muted">
+                        商家主账号优先认领，坐席账号智能分配，可随意转接客服，最大限度满足客服需求
+                    </small>
+                    </span>
+                    </label>
+                    <label class=" d-flex gap-2 pb-3">
+                        <input class="form-check-input flex-shrink-0" type="checkbox" disabled checked="true">
+                        <span>支持H5移动端
+                    <small class="d-block text-muted">
+                        系统自动适配移动端，也可以接入app(h5方式)
+                    </small>
+                    </span>
+                    </label>
+
+                    <label class=" d-flex gap-2 pb-3">
+                        <input class="form-check-input flex-shrink-0" type="checkbox" disabled checked="true">
+                        <span>支持微信公众号/手机APP管理系统
+                    <small class="d-block text-muted">
+                        客服可以与微信公众号/手机app管理系统访客实时沟通
+                    </small>
+                    </span>
+                    </label>
+
+                    <label class=" d-flex gap-2 pb-3">
+                        <input class="form-check-input flex-shrink-0" type="checkbox" disabled checked="true">
+                        <span>机器人自动回复
+                    <small class="d-block text-muted">
+                        支持设置常见问题，顾客可以点击常见问题系统会自动回复，也可以设置关键词，触发关键词机器人自动回复
+                    </small>
+                    </span>
+                    </label>
+
+                    <label class=" d-flex gap-2 pb-3">
+                        <input class="form-check-input flex-shrink-0" type="checkbox" disabled checked="true">
+                        <span>其它
+                    <small class="d-block text-muted">
+                        发送文本图片语音信息、访客标签备注轨迹搜索、消息预知、数据统计、来源追踪、自动欢迎问候语、客服消息监控等...
+                    </small>
+                    </span>
+                    </label>
+                </div>
+
+                <div class="col-10 col-sm-8 col-lg-6">
+                    <img src="static/images/visitor.jpg" class="d-block mx-lg-auto img-fluid shadow-lg" alt="GOFLY客服访客界面" width="397" loading="lazy">
+                </div>
+            </div>
+            <h2 class="pt-5 pb-5" name="feature"  id="feature">我们的优势</h2>
+            <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+                <div class="feature col">
+                    <div class="feature-icon bg-primary bg-gradient">
+                        <svg class="bi" width="1em" height="1em"><use xlink:href="#collection"></use></svg>
+                    </div>
+                    <h2 class="display-7">源码开放</h2>
+                    <p>
+                        不像其它客服系统按坐席按年收费，GOFLY客服系统一次购买，终身使用，源码可二开，无域名限制，无服务器限制！
+                    </p>
+                    <a href="/login" class="icon-link">
+                        立即试用
+                        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
+                    </a>
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon bg-primary bg-gradient">
+                        <svg class="bi" width="1em" height="1em"><use xlink:href="#people-circle"></use></svg>
+                    </div>
+                    <h2  class="display-7">不限坐席</h2>
+                    <p>
+                        部署一套系统即可支持多个用户(网站)使用，每注册一个用户为一个商家，不限商家数，不限制坐席数
+                    </p>
+                    <a href="/login" class="icon-link">
+                        立即试用
+                        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
+                    </a>
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon bg-primary bg-gradient">
+                        <svg class="bi" width="1em" height="1em"><use xlink:href="#toggles2"></use></svg>
+                    </div>
+                    <h2  class="display-7">数据安全</h2>
+                    <p>
+                        程序源码及聊天数据全部存储在自己的服务器，无任何第三方服务依赖，支持SSL加密隧道传输，可避免信息数据泄露
+                    </p>
+                    <a href="/login" class="icon-link">
+                        立即试用
+                        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+                <div class="feature col">
+                    <div class="feature-icon bg-primary bg-gradient">
+
+                        <svg width="1em" height="1em" xmlns="http://www.w3.org/2000/svg"  fill="currentColor" class="bi bi-code-slash" viewBox="0 0 16 16">
+                            <path d="M10.478 1.647a.5.5 0 1 0-.956-.294l-4 13a.5.5 0 0 0 .956.294l4-13zM4.854 4.146a.5.5 0 0 1 0 .708L1.707 8l3.147 3.146a.5.5 0 0 1-.708.708l-3.5-3.5a.5.5 0 0 1 0-.708l3.5-3.5a.5.5 0 0 1 .708 0zm6.292 0a.5.5 0 0 0 0 .708L14.293 8l-3.147 3.146a.5.5 0 0 0 .708.708l3.5-3.5a.5.5 0 0 0 0-.708l-3.5-3.5a.5.5 0 0 0-.708 0z"/>
+                        </svg>
+                    </div>
+                    <h2 class="display-7">Golang+Vue结构开发</h2>
+                    <p>
+                        语言的优势可以轻松应对高并发问题，访客再多也不怕！
+                    </p>
+                    <a href="/login" class="icon-link">
+                        立即试用
+                        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
+                    </a>
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon bg-primary bg-gradient">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-dice-6-fill" viewBox="0 0 16 16">
+                            <path d="M3 0a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V3a3 3 0 0 0-3-3H3zm1 5.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm8 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zm1.5 6.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM12 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3zM5.5 12a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zM4 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3z"/>
+                        </svg>
+                    </div>
+                    <h2  class="display-7">轻松部署</h2>
+                    <p>
+                        一段代码，一个链接，轻松部署，移动APP, 网页咨询, 图片，语音，表情，文件多元素沟通.
+                    </p>
+                    <a href="/login" class="icon-link">
+                        立即试用
+                        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
+                    </a>
+                </div>
+                <div class="feature col">
+                    <div class="feature-icon bg-primary bg-gradient">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-menu-up" viewBox="0 0 16 16">
+                            <path d="M7.646 15.854a.5.5 0 0 0 .708 0L10.207 14H14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3.793l1.853 1.854zM1 9V6h14v3H1zm14 1v2a1 1 0 0 1-1 1h-3.793a1 1 0 0 0-.707.293l-1.5 1.5-1.5-1.5A1 1 0 0 0 5.793 13H2a1 1 0 0 1-1-1v-2h14zm0-5H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v2zM2 11.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 0-1h-8a.5.5 0 0 0-.5.5zm0-4a.5.5 0 0 0 .5.5h11a.5.5 0 0 0 0-1h-11a.5.5 0 0 0-.5.5zm0-4a.5.5 0 0 0 .5.5h6a.5.5 0 0 0 0-1h-6a.5.5 0 0 0-.5.5z"/>
+                        </svg>
+                    </div>
+                    <h2  class="display-7">多客服对话分配</h2>
+                    <p>
+                        支持客服分流/转接/，多客服沟通，到达信息精准传达，无须客户沟通重复内容.
+                    </p>
+                    <a href="/login" class="icon-link">
+                        立即试用
+                        <svg class="bi" width="1em" height="1em"><use xlink:href="#chevron-right"></use></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="product">
+            <h2 class="pt-5 pb-5">测试一下访客或客服功能</h2>
+            <div class="productContent">
+
+                因为微信对外链网址有限制，扫码后需要复制到浏览器打开，可以使用手机自带的扫码工具扫描下面的二维码，或者发送到文件传输助手再点击。
+                <br/>
+                <img src="/static/images/visitor.png" width="150px"  alt="GOFLY在线客服"/>
+            </div>
+            <h4>客服端android手机APP下载</h4>
+            <div class="productContent">
+                <p>
+                    如果使用微信扫码下载APP空白页，请点击右上角在浏览器打开即可
+                </p>
+                <p>
+                    <img src="/static/images/gofly-0.5.4.apk.png" width="180px"  alt="GOFLY在线客服"/>
+                </p>
+                <p>
+                    APP界面截图<br/>
+                    <img src="/static/images/app1.jpg" width="180px"  alt="GOFLY在线客服"/>
+                    <img src="/static/images/app2.jpg" width="180px"  alt="GOFLY在线客服"/>
+                    <img src="/static/images/app3.jpg" width="180px"  alt="GOFLY在线客服"/>
+                </p>
+            </div>
+        </div>
+
+        <div class="product">
+        <h2 class="pt-3 pb-3 mb-2">更新日志</h2>
+
+        <h4 class="pt-3 pb-3 mb-2">v0.6.0</h4>
+        <pre class="updateLog">
+新增访客黑名单功能，可以根据访客id加入黑名单
+新增api接口可优雅关闭服务，在守护模式下相当于重启服务
+新增客服端搜索客服账号接口
+新增微信公众号访客展示是否关注公众号标签
+新增客服端首页展示系统公告，超管可以添加管理系统公告
+新增系统配置微信模板remark字段，模板消息会展示该字段
+修复优化访客表新增real_name字段，客服端首先展示该字段，客服备注姓名存入该字段
+修复子进程退出次数太多，父守护进程也退出问题
+修复优化传递商品卡片信息样式效果
+修复优化访客端图片缩略展示，点击预览大图效果
+
+
+        </pre>
+        <h4 class="pt-3 pb-3 mb-2">v0.5.9</h4>
+        <pre class="updateLog">
+新增系统配置项，系统管理员权限可以在后台配置本客服系统的标题、关键字、版权等基本信息，以及是否显示注册按钮等
+新增商户账号可以查看访客的基本信息，可以查看访客是否绑定了微信公众号
+新增商户账号下访客列表展示ip和对应的地址
+新增清除访客聊天记录
+新增商户配置项，上传微信域名验证文件功能
+新增生成微信公众号菜单可视化编辑功能
+新增微信公众号主动发客服消息接口是否开启配置项
+修复微信公众号和访客绑定功能，访客关注时新增绑定，访客取关时删除绑定
+修复访客端超时，另开tab标签等操作时，弹窗确认重新reload页面</pre>
+        <h4 class="pt-3 pb-3 mb-2">v0.5.8</h4>
+        <pre class="updateLog">
+新增微信公众号网页oauth授权功能，网页获取微信用户的昵称和头像
+新增微信公众号关注时自动回复消息功能，与原来的自动欢迎拆分开
+新增访客页面二次跳转到落地域名的配置项
+新增微信公众号模板消息，可以给客服、访客发送新消息提醒模板消息
+新增微信公众号带参二维码，绑定客服与微信id
+新增商户后台配置模板id功能，增加客服消息、访客消息，访客上线三个模板配置
+修改客服相关接口的接口前缀
+修复访客id分割错误问题，访客id连接符修改
+修复微信公众号access_token获取接口次数超限制问题</pre>
+        <h4 class="pt-3 pb-3 mb-2">v0.5.5</h4>
+        <pre class="updateLog">
+新增访客端显示客服在线离线状态，判断客服离线状态
+新增自动欢迎内容增加富文本编辑器wangEditor
+新增独立链接模式传递访客名称，id和头像信息
+新增客服界面展示访客操作系统、浏览器等信息
+新增给访客打tag标签功能，可以根据tag标签搜索
+新增访客列表搜索功能，根据访客id或者名称进行搜索
+修改访客端消息时间的格式
+修复通知邮件465端口不能发送问题，支持tls的smtp端口
+修复访客端websocket连接最大次数限制不起作用问题</pre>
+        <h4 class="pt-3 pb-3 mb-2">v0.5.1</h4>
+        ...
+        </div>
+
+
+
+    <div class="container mainIntro" style="display: none;">
+        <div class="product" name="price">
+            <h3>版本区别</h3>
+            <div class="productCardLeft">
+                <h4>域名限制版</h4>
+                <div class="productContent">
+                    <ol>
+                        <li><span style="color:#f1582b">按域名授权，终身使用</span></li>
+                        <li><span style="color:#f1582b">得到前端部分客服系统源码，可二次开发</span></li>
+                        <li>部署一套可供多个站点接入</li>
+                        <li>客服程序和数据自己掌控</li>
+                        <li>可用于任何个人正规平台</li>
+                        <li>提供1个月一对一技术咨询支持</li>
+                        <li>半年内免费更新</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="productCardRight">
+                <h4>全开源无限制版</h4>
+                <div class="productContent">
+                    <ol>
+                        <li><span style="color:#f1582b">源码完全开源，没有任何限制，终身使用</span></li>
+                        <li><span style="color:#f1582b">得到所有客服系统源码，可二次开发</span></li>
+                        <li>部署一套可供多个站点接入</li>
+                        <li>客服程序和数据自己掌控</li>
+                        <li>可用于任何企业或个人正规平台</li>
+                        <li>提供6个月一对一技术咨询支持</li>
+                        <li>一年内免费更新</li>
+                    </ol>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+    </div>
+
+        <div class="product" id="contact" name="contact">
+            <h2  class="pt-3 pb-3 mb-2">联系我</h2>
+            <div class="productContent">
+                您可以直接在线客服联系我 , 如果我离线时也可以直接留言 , 或者加我微信 , 加我 QQ: 630892807
+                <p><img src="/static/images/wechat.jpg" width="200px"  alt="GOFLY在线客服"/></p>
+            </div>
+        </div>
+
+
+</div>
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    <symbol id="bootstrap" viewBox="0 0 118 94">
+        <title>Bootstrap</title>
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M24.509 0c-6.733 0-11.715 5.893-11.492 12.284.214 6.14-.064 14.092-2.066 20.577C8.943 39.365 5.547 43.485 0 44.014v5.972c5.547.529 8.943 4.649 10.951 11.153 2.002 6.485 2.28 14.437 2.066 20.577C12.794 88.106 17.776 94 24.51 94H93.5c6.733 0 11.714-5.893 11.491-12.284-.214-6.14.064-14.092 2.066-20.577 2.009-6.504 5.396-10.624 10.943-11.153v-5.972c-5.547-.529-8.934-4.649-10.943-11.153-2.002-6.484-2.28-14.437-2.066-20.577C105.214 5.894 100.233 0 93.5 0H24.508zM80 57.863C80 66.663 73.436 72 62.543 72H44a2 2 0 01-2-2V24a2 2 0 012-2h18.437c9.083 0 15.044 4.92 15.044 12.474 0 5.302-4.01 10.049-9.119 10.88v.277C75.317 46.394 80 51.21 80 57.863zM60.521 28.34H49.948v14.934h8.905c6.884 0 10.68-2.772 10.68-7.727 0-4.643-3.264-7.207-9.012-7.207zM49.948 49.2v16.458H60.91c7.167 0 10.964-2.876 10.964-8.281 0-5.406-3.903-8.178-11.425-8.178H49.948z"></path>
+    </symbol>
+    <symbol id="home" viewBox="0 0 16 16">
+        <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z"/>
+    </symbol>
+    <symbol id="speedometer2" viewBox="0 0 16 16">
+        <path d="M8 4a.5.5 0 0 1 .5.5V6a.5.5 0 0 1-1 0V4.5A.5.5 0 0 1 8 4zM3.732 5.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 10a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 10zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 9.31a.91.91 0 1 0 1.302 1.258l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+        <path fill-rule="evenodd" d="M0 10a8 8 0 1 1 15.547 2.661c-.442 1.253-1.845 1.602-2.932 1.25C11.309 13.488 9.475 13 8 13c-1.474 0-3.31.488-4.615.911-1.087.352-2.49.003-2.932-1.25A7.988 7.988 0 0 1 0 10zm8-7a7 7 0 0 0-6.603 9.329c.203.575.923.876 1.68.63C4.397 12.533 6.358 12 8 12s3.604.532 4.923.96c.757.245 1.477-.056 1.68-.631A7 7 0 0 0 8 3z"/>
+    </symbol>
+    <symbol id="table" viewBox="0 0 16 16">
+        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm15 2h-4v3h4V4zm0 4h-4v3h4V8zm0 4h-4v3h3a1 1 0 0 0 1-1v-2zm-5 3v-3H6v3h4zm-5 0v-3H1v2a1 1 0 0 0 1 1h3zm-4-4h4V8H1v3zm0-4h4V4H1v3zm5-3v3h4V4H6zm4 4H6v3h4V8z"/>
+    </symbol>
+    <symbol id="people-circle" viewBox="0 0 16 16">
+        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
+        <path fill-rule="evenodd" d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"/>
+    </symbol>
+    <symbol id="grid" viewBox="0 0 16 16">
+        <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zM2.5 2a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zM1 10.5A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3zm6.5.5A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3zm1.5-.5a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+    </symbol>
+    <symbol id="collection" viewBox="0 0 16 16">
+        <path d="M2.5 3.5a.5.5 0 0 1 0-1h11a.5.5 0 0 1 0 1h-11zm2-2a.5.5 0 0 1 0-1h7a.5.5 0 0 1 0 1h-7zM0 13a1.5 1.5 0 0 0 1.5 1.5h13A1.5 1.5 0 0 0 16 13V6a1.5 1.5 0 0 0-1.5-1.5h-13A1.5 1.5 0 0 0 0 6v7zm1.5.5A.5.5 0 0 1 1 13V6a.5.5 0 0 1 .5-.5h13a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-.5.5h-13z"/>
+    </symbol>
+    <symbol id="calendar3" viewBox="0 0 16 16">
+        <path d="M14 0H2a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zM1 3.857C1 3.384 1.448 3 2 3h12c.552 0 1 .384 1 .857v10.286c0 .473-.448.857-1 .857H2c-.552 0-1-.384-1-.857V3.857z"/>
+        <path d="M6.5 7a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-9 3a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm3 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/>
+    </symbol>
+    <symbol id="chat-quote-fill" viewBox="0 0 16 16">
+        <path d="M16 8c0 3.866-3.582 7-8 7a9.06 9.06 0 0 1-2.347-.306c-.584.296-1.925.864-4.181 1.234-.2.032-.352-.176-.273-.362.354-.836.674-1.95.77-2.966C.744 11.37 0 9.76 0 8c0-3.866 3.582-7 8-7s8 3.134 8 7zM7.194 6.766a1.688 1.688 0 0 0-.227-.272 1.467 1.467 0 0 0-.469-.324l-.008-.004A1.785 1.785 0 0 0 5.734 6C4.776 6 4 6.746 4 7.667c0 .92.776 1.666 1.734 1.666.343 0 .662-.095.931-.26-.137.389-.39.804-.81 1.22a.405.405 0 0 0 .011.59c.173.16.447.155.614-.01 1.334-1.329 1.37-2.758.941-3.706a2.461 2.461 0 0 0-.227-.4zM11 9.073c-.136.389-.39.804-.81 1.22a.405.405 0 0 0 .012.59c.172.16.446.155.613-.01 1.334-1.329 1.37-2.758.942-3.706a2.466 2.466 0 0 0-.228-.4 1.686 1.686 0 0 0-.227-.273 1.466 1.466 0 0 0-.469-.324l-.008-.004A1.785 1.785 0 0 0 10.07 6c-.957 0-1.734.746-1.734 1.667 0 .92.777 1.666 1.734 1.666.343 0 .662-.095.931-.26z"/>
+    </symbol>
+    <symbol id="cpu-fill" viewBox="0 0 16 16">
+        <path d="M6.5 6a.5.5 0 0 0-.5.5v3a.5.5 0 0 0 .5.5h3a.5.5 0 0 0 .5-.5v-3a.5.5 0 0 0-.5-.5h-3z"/>
+        <path d="M5.5.5a.5.5 0 0 0-1 0V2A2.5 2.5 0 0 0 2 4.5H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2v1H.5a.5.5 0 0 0 0 1H2A2.5 2.5 0 0 0 4.5 14v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14h1v1.5a.5.5 0 0 0 1 0V14a2.5 2.5 0 0 0 2.5-2.5h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14v-1h1.5a.5.5 0 0 0 0-1H14A2.5 2.5 0 0 0 11.5 2V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5a.5.5 0 0 0-1 0V2h-1V.5zm1 4.5h3A1.5 1.5 0 0 1 11 6.5v3A1.5 1.5 0 0 1 9.5 11h-3A1.5 1.5 0 0 1 5 9.5v-3A1.5 1.5 0 0 1 6.5 5z"/>
+    </symbol>
+    <symbol id="gear-fill" viewBox="0 0 16 16">
+        <path d="M9.405 1.05c-.413-1.4-2.397-1.4-2.81 0l-.1.34a1.464 1.464 0 0 1-2.105.872l-.31-.17c-1.283-.698-2.686.705-1.987 1.987l.169.311c.446.82.023 1.841-.872 2.105l-.34.1c-1.4.413-1.4 2.397 0 2.81l.34.1a1.464 1.464 0 0 1 .872 2.105l-.17.31c-.698 1.283.705 2.686 1.987 1.987l.311-.169a1.464 1.464 0 0 1 2.105.872l.1.34c.413 1.4 2.397 1.4 2.81 0l.1-.34a1.464 1.464 0 0 1 2.105-.872l.31.17c1.283.698 2.686-.705 1.987-1.987l-.169-.311a1.464 1.464 0 0 1 .872-2.105l.34-.1c1.4-.413 1.4-2.397 0-2.81l-.34-.1a1.464 1.464 0 0 1-.872-2.105l.17-.31c.698-1.283-.705-2.686-1.987-1.987l-.311.169a1.464 1.464 0 0 1-2.105-.872l-.1-.34zM8 10.93a2.929 2.929 0 1 1 0-5.86 2.929 2.929 0 0 1 0 5.858z"/>
+    </symbol>
+    <symbol id="speedometer" viewBox="0 0 16 16">
+        <path d="M8 2a.5.5 0 0 1 .5.5V4a.5.5 0 0 1-1 0V2.5A.5.5 0 0 1 8 2zM3.732 3.732a.5.5 0 0 1 .707 0l.915.914a.5.5 0 1 1-.708.708l-.914-.915a.5.5 0 0 1 0-.707zM2 8a.5.5 0 0 1 .5-.5h1.586a.5.5 0 0 1 0 1H2.5A.5.5 0 0 1 2 8zm9.5 0a.5.5 0 0 1 .5-.5h1.5a.5.5 0 0 1 0 1H12a.5.5 0 0 1-.5-.5zm.754-4.246a.389.389 0 0 0-.527-.02L7.547 7.31A.91.91 0 1 0 8.85 8.569l3.434-4.297a.389.389 0 0 0-.029-.518z"/>
+        <path fill-rule="evenodd" d="M6.664 15.889A8 8 0 1 1 9.336.11a8 8 0 0 1-2.672 15.78zm-4.665-4.283A11.945 11.945 0 0 1 8 10c2.186 0 4.236.585 6.001 1.606a7 7 0 1 0-12.002 0z"/>
+    </symbol>
+    <symbol id="toggles2" viewBox="0 0 16 16">
+        <path d="M9.465 10H12a2 2 0 1 1 0 4H9.465c.34-.588.535-1.271.535-2 0-.729-.195-1.412-.535-2z"/>
+        <path d="M6 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm0 1a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm.535-10a3.975 3.975 0 0 1-.409-1H4a1 1 0 0 1 0-2h2.126c.091-.355.23-.69.41-1H4a2 2 0 1 0 0 4h2.535z"/>
+        <path d="M14 4a4 4 0 1 1-8 0 4 4 0 0 1 8 0z"/>
+    </symbol>
+    <symbol id="tools" viewBox="0 0 16 16">
+        <path d="M1 0L0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.356 3.356a1 1 0 0 0 1.414 0l1.586-1.586a1 1 0 0 0 0-1.414l-3.356-3.356a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l3 3a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/>
+    </symbol>
+    <symbol id="chevron-right" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
+    </symbol>
+    <symbol id="geo-fill" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M4 4a4 4 0 1 1 4.5 3.969V13.5a.5.5 0 0 1-1 0V7.97A4 4 0 0 1 4 3.999zm2.493 8.574a.5.5 0 0 1-.411.575c-.712.118-1.28.295-1.655.493a1.319 1.319 0 0 0-.37.265.301.301 0 0 0-.057.09V14l.002.008a.147.147 0 0 0 .016.033.617.617 0 0 0 .145.15c.165.13.435.27.813.395.751.25 1.82.414 3.024.414s2.273-.163 3.024-.414c.378-.126.648-.265.813-.395a.619.619 0 0 0 .146-.15.148.148 0 0 0 .015-.033L12 14v-.004a.301.301 0 0 0-.057-.09 1.318 1.318 0 0 0-.37-.264c-.376-.198-.943-.375-1.655-.493a.5.5 0 1 1 .164-.986c.77.127 1.452.328 1.957.594C12.5 13 13 13.4 13 14c0 .426-.26.752-.544.977-.29.228-.68.413-1.116.558-.878.293-2.059.465-3.34.465-1.281 0-2.462-.172-3.34-.465-.436-.145-.826-.33-1.116-.558C3.26 14.752 3 14.426 3 14c0-.599.5-1 .961-1.243.505-.266 1.187-.467 1.957-.594a.5.5 0 0 1 .575.411z"/>
+    </symbol>
+
+</svg>
+{{template "footer" .}}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>多语言客服-会员对接-客服接入微信公众号等功能演示-在线客服系统-客服系统源码-GOFLY官网</title>
+    <meta name="keywords" content="在线客服系统,在线客服代码,客服系统源码,网页聊天工具,免费在线客服，开源在线客服,网站客服系统" />
+    <meta name="description" content="GOFLY客服,GO-FLY开源客服，一套可独立私有化部署的免费开源客服系统，网站在线客服系统，下载zip解压即可，仅依赖MySQL数据库，是一个开箱即用的网页在线客服，适合PHP程序员使用，同时也是首页完全可以编辑的单页营销系统." />
+
+    {{template "index-meta" .}}
+</head>
+<body class="main">
+
+{{template "index-nav" .}}
+<div class="container">
+    <div class="subTitle  margin-top90">
+        <h2 class="mb-2">演示中心</h2>
+        <p>多语言/会员对接/接入微信公众号等功能！</p>
+    </div>
+    <div class="product mainIntro">
+        <h3 class="pt-3 pb-3 mb-2">演示</h3>
+        <h4 class="pt-3 pb-3 mb-2">访客对话链接模式</h4>
+        <p>
+            在自己的网站上，直接放置访客链接，当用户点击链接可跳转到在线客服，例如下面的按钮
+        <p>
+            安置超链接的代码<br/>
+            <pre>&lt;a href=&quot;h&amp;ent_id=2&quot;&gt;在线咨询&lt;/a&gt;
+</pre>
+        <br/>
+        <a class="btn btn-info  useBtn me-3" href="" target="_blank"><i class="bi bi-display me-1"></i>联系客服
+        </a>
+        </p>
+
+        <h4 class="pt-3 pb-3 mb-2">独立链接传递参数</h4>
+        <p>
+            在以上超链接的基础上，增加参数visitor_id=会员id&visitor_name=会员名称，可以绑定展示自有会员
+            <br/>
+        <pre>&lt;a href=&quot;2&amp;ent_id=2&amp;visitor_id=1&amp;visitor_name=轻风&quot;&gt;在线咨询&lt;/a&gt;
+</pre>
+        <br/>
+        <a class="btn btn-info  useBtn me-3" href="" target="_blank"><i class="bi bi-display me-1"></i>在线咨询
+        </a>
+
+        </p>
+
+        <p>
+            增加参数lang=cn/en/jp，可以展示多语言界面，cn 中午、en 英文、jp 日文
+            <br/>
+        <pre>&lt;a href=&quot;u2&amp;ent_id=2&amp;visitor_id=2&amp;visitor_name=Wayne&amp;lang=en&quot;&gt;live chat&lt;/a&gt;
+</pre>
+        <br/>
+        <a class="btn btn-info  useBtn me-3" href="" target="_blank"><i class="bi bi-display me-1"></i>live chat
+        </a>
+        <br/>
+        可以把访客链接存入二维码，这样用户可以直接扫码对话，例如下面的二维码<br/>
+        <img src="/static/images/kefu2.jpg" width="150px">
+        </p>
+        <h4 class="pt-3 pb-3 mb-2">客服后台演示</h4>
+        <p>
+            建议直接注册账号体验系统功能，注册完成后联系管理员开通账号。<br/>
+            后台客服演示账号：kefu2，密码：123456<br/>
+            <a class="btn btn-info  useBtn me-3" href="" target="_blank"><i class="bi bi-display me-1"></i>客服后台
+            </a>
+        </p>
+        <h4 class="pt-3 pb-3 mb-2">对接微信公众号</h4>
+        <p>
+            在微信公众号后台查看AppID,AppSecret，设置与开发===>基本配置。<br/>
+            设置白名单IP:   81.69.45.114<br/>
+            服务器配置，填写自己的服务器配置URL与令牌。<br/>
+            <img src="/static/images/install/gongzhonghao.jpg" class="productImg"/><br/>
+
+        </p>
+        <p>
+        服务器配置URL在客服后台查看。<br/>
+        <img src="/static/images/install/gongzhongkf.jpg" class="productImg"/>
+        </p>
+        <p>
+            在客服后台填写微信公众号AppID，AppSecret，Token。<br/>
+            <img src="/static/images/install/appid.jpg" class="productImg"/>
+        </p>
+
+        <h4 class="pt-3 pb-3 mb-2">访客来访提醒</h4>
+        <p>
+            配置通知邮箱，微信开启QQ邮箱提醒，或关注第三方邮箱公众号。<br/>
+            QQ邮箱配置示例，开启smtp功能，并获取smtp授权码：<br/>
+            <img src="/static/images/install/email1.jpg" class="productImg"/><br/>
+            <img src="/static/images/install/email2.jpg" class="productImg"/><br/>
+        </p>
+        <p>
+            后台配置通知邮箱。<br/>
+            <img src="/static/images/install/email3.jpg" class="productImg"/>
+        </p>
+
+    </div>
+</div>
+{{template "footer" .}}

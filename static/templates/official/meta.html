@@ -1,0 +1,21 @@
+{{define "index-meta"}}
+<link rel="stylesheet" type="text/css" href="static/css/bootstrap.min.css?v=0.5.5" />
+<link rel="stylesheet" type="text/css" href="static/css/bootstrap-icons.css?v=0.5.5" />
+<link rel="stylesheet" type="text/css" href="static/css/style.css?v=0.5.5" />
+
+<!--对接客服代码,安装完成后更改成自己的域名或IP，下面js文件路径以及GOFLY_URL都要改-->
+<script src=""></script>
+<script>
+    GOFLY.init({
+        GOFLY_URL:"",
+        GOFLY_KEFU_ID: "taoshihan",
+        GOFLY_ENT: "5",
+        GOFLY_LANG:"cn",
+        GOFLY_AUTO_OPEN:true,
+        GOFLY_SHOW_TYPES:2,
+    });
+</script>
+<!--//对接客服代码-->
+<link rel="shortcut icon" href="static/images/favicon.ico"/>
+
+{{ end }}

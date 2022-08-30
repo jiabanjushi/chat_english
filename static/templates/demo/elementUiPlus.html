@@ -1,0 +1,86 @@
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <!-- Import style -->
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/element-plus/dist/index.css"
+    />
+    <!-- Import Vue 3 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@next"></script>
+    <!-- Import component library -->
+    <script src="https://cdn.jsdelivr.net/npm/element-plus"></script>
+</head>
+<body>
+<div id="app">
+    <el-button>${ message }</el-button>
+</div>
+<script src="../../js/reconnect-websocket.js"></script>
+<script>
+    const App = {
+        compilerOptions: {
+            delimiters: ['${', '}'],
+            comments: true
+        },
+        data() {
+            return {
+                message: "Hello Element Plus",
+                apiHost:"ws://127.0.0.1:8081/ws/v2/visitor",
+                websocket:null,
+                websocketOpenNum:0,
+                websocketMaxOpenNum:20,
+                websocketClosed:true,
+            };
+        },
+        methods: {
+            //初始化websocket连接
+            initWebsocketConn() {
+                this.websocket = new ReconnectingWebSocket(this.apiHost,null,{
+                    debug:true
+                });//创建Socket实例
+                this.websocket.onmessage = this.onMessage;
+                this.websocket.onopen = this.onOpen;
+                this.websocket.onerror = this.onError;
+                this.websocket.onclose = this.onClose;
+            },
+            onOpen(){
+                console.log("ws:onOpen");
+                if(this.websocketOpenNum>=this.websocketMaxOpenNum){
+                    this.websocket.close();
+                }
+                this.websocketOpenNum++;
+                this.websocketClosed=false;
+                this.ping();
+            },
+            onMessage(){
+                console.log("ws:onMessage");
+            },
+            onError(){
+                console.log("ws:onError");
+            },
+            onClose(){
+                console.log("ws:onClose");
+                this.websocketClosed=true;
+            },
+            //心跳包
+            ping(){
+                var _this=this;
+                setInterval(function () {
+                    if(!_this.websocketClosed){
+                        _this.websocket.send("ping");
+                    }
+                },10000);
+            },
+        },
+        //属性初始化
+        created(){
+            this.initWebsocketConn();
+        }
+    };
+    const app = Vue.createApp(App);
+    app.use(ElementPlus);
+    app.mount("#app");
+</script>
+</body>
+</html>

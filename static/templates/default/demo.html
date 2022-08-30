@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>GOFLY客服系统访客端演示页</title>
+    <meta name="keywords" content="GOFLY，GO-FLY" />
+    <meta name="description" content="HELLO GOFLY LIVE CHAT !" />
+    <style>body{color: #333;}a{color: #333;}</style>
+</head>
+<body>
+<h3><a href="/login">客服后台</a></h3>
+<h4>商户账户: kefu2 商户密码:123</h4>
+<h4>客服账户:kefu3或者kefu4  客服密码: 123</h4>
+<h4>演示访客:</h4>
+<h6>雪狼骑兵</h6>
+<img width="100px" src="http://www.weixintouxiang.cn/weixin/201406070927302901.gif"/>
+<h4>演示产品:</h4>
+<div>
+    <h6>格力（GREE）1.5匹 云佳 新一级能效 变频冷暖 自清洁 壁挂式空调挂机KFR-35GW/NhGc1B</h6>
+    <h6>￥3099.00</h6>
+    <img width="100px" src="https://img10.360buyimg.com/n7/jfs/t1/172222/35/3374/75144/6072e7efEfd2962ca/1eab8d23fa1bb080.jpg"/>
+</div>
+
+<script>
+    GOFLY.init({
+        GOFLY_URL:"https://jd.sopans.com/",
+        GOFLY_KEFU_ID: "kefu2",
+        GOFLY_ENT: "2",
+        GOFLY_BTN_TEXT: "点击在线咨询",
+        GOFLY_EXTRA:{
+            "visitorName":"雪狼骑兵",//会覆盖默认访客名
+            "visitorAvatar":"http://www.weixintouxiang.cn/weixin/201406070927302901.gif",//会覆盖默认访客头像
+            "visitorProduct":{
+                "title":"格力（GREE）1.5匹 云佳 新一级能效 变频冷暖 自清洁 壁挂式空调挂机KFR-35GW/NhGc1B",
+                "price":"￥3099.00",
+                "img":"https://img10.360buyimg.com/n7/jfs/t1/172222/35/3374/75144/6072e7efEfd2962ca/1eab8d23fa1bb080.jpg",
+                "url":"",
+            }
+        }
+    })
+</script>
+</body>
+</html>

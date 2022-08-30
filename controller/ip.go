@@ -1,0 +1,67 @@
+package controller
+
+import (
+	"github.com/gin-gonic/gin"
+	"go-fly-muti/common"
+	"go-fly-muti/models"
+	"strconv"
+)
+
+func PostIpblack(c *gin.Context) {
+	ip := c.PostForm("ip")
+	name := c.PostForm("name")
+	if ip == "" {
+		c.JSON(200, gin.H{
+			"code": 400,
+			"msg":  "请输入IP!",
+		})
+		return
+	}
+	kefuId, _ := c.Get("kefu_name")
+	models.CreateIpblack(ip, kefuId.(string), name)
+	c.JSON(200, gin.H{
+		"code": 200,
+		"msg":  "添加IP黑名单成功!",
+	})
+}
+func DelIpblack(c *gin.Context) {
+	ip := c.Query("ip")
+	if ip == "" {
+		c.JSON(200, gin.H{
+			"code": 400,
+			"msg":  "请输入IP!",
+		})
+		return
+	}
+	models.DeleteIpblackByIp(ip)
+	c.JSON(200, gin.H{
+		"code": 200,
+		"msg":  "删除黑名单成功!",
+	})
+}
+func GetIpblacks(c *gin.Context) {
+	page, _ := strconv.Atoi(c.Query("page"))
+	if page == 0 {
+		page = 1
+	}
+	count := models.CountIps(nil, nil)
+	list := models.FindIps(nil, nil, uint(page), common.VisitorPageSize)
+	c.JSON(200, gin.H{
+		"code": 200,
+		"msg":  "ok",
+		"result": gin.H{
+			"list":     list,
+			"count":    count,
+			"pagesize": common.PageSize,
+		},
+	})
+}
+func GetIpblacksByKefuId(c *gin.Context) {
+	kefuId, _ := c.Get("kefu_name")
+	list := models.FindIpsByKefuId(kefuId.(string))
+	c.JSON(200, gin.H{
+		"code":   200,
+		"msg":    "ok",
+		"result": list,
+	})
+}

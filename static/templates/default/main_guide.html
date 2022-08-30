@@ -1,0 +1,305 @@
+<html lang="cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="description" content="">
+    <meta name="author" content="GOFLY">
+    <title>GO语言开源客服系统-GOFLY</title>
+    <link rel="stylesheet" href="https://cdn.staticfile.org/element-ui/2.15.7/theme-chalk/index.min.css">
+    <script src="https://cdn.staticfile.org/vue/2.6.11/vue.min.js"></script>
+    <script src="https://cdn.staticfile.org/element-ui/2.15.7/index.js"></script>
+    <script src="https://cdn.staticfile.org/jquery/2.2.4/jquery.min.js"></script>
+    <script src="https://cdn.staticfile.org/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <link rel="stylesheet" href="/static/css/common.css">
+    <script src="/static/js/functions.js"></script>
+    <script src="/static/js/chat-lang.js?v=1.0.1"></script>
+</head>
+<style>
+    .el-message-box{
+        width: 800px;
+        overflow: auto;
+    }
+</style>
+<body class="text-center">
+<div id="app">
+    <template>
+        <div class="guideHeader">Hello，<{nickname}></div>
+        <div class="guideBg margin20" style="display: none">
+            <{noticeContent}>
+        </div>
+        <div class="guideContent">
+
+            <div class="left">
+                <ul>
+
+                    <dl>
+                        <dt>业务版本</dt>
+                        <dd><{versionName}></dd>
+                    </dl>
+                    <dl>
+                        <dt>版本号</dt>
+                        <dd>v<{versionCode}>
+                        <a href="" v-show="needUpdate" target="_blank">( 新版本 )</a>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>访客链接</dt>
+                        <dd>
+                        <el-button  size="small" type="primary" v-on:click="copyText(host+'/chatIndex?kefu_id='+kefuName+'&ent_id='+entId)">复制</el-button>
+                        </dd>
+                    </dl>
+                    <dl>
+                        <dt>微信链接</dt>
+                        <dd>
+                            <el-button  size="small" type="primary" v-on:click="copyText(wechatMenuUrl)">复制</el-button>
+                        </dd>
+                    </dl>
+
+                </ul>
+                <div>
+                    <p>访客测试扫下面码</p>
+                    <img :src="visitorQrcode"/>
+                </div>
+
+            </div>
+            <div class="right">
+
+                <el-tabs  @tab-click="handleTabClick">
+                    <el-tab-pane label="公告">
+
+                        <div class="news">
+
+                            <el-empty description="暂无数据" v-show="newsList.list.length==0"></el-empty>
+
+                            <div class="newsItem" v-for="v in newsList.list">
+                                <el-tag effect="dark" :type='v.tag' class="newsTag">
+                                    <{v.tag}>
+                                </el-tag>
+                                <a class="newsTitle" @click="showNewsContent(v)"><{v.title}></a>
+                                <span class="newsTime"><{v.created_at}></span>
+                                <div class="clear"></div>
+                            </div>
+
+                        </div>
+                        <el-pagination
+                                background
+                                @current-change="getNews"
+                                :current-page="newsList.page"
+                                layout="prev,pager, next"
+                                :page-size="newsList.pagesize"
+                                :total="newsList.count">
+                        </el-pagination>
+                    </el-tab-pane>
+                </el-tabs>
+            </div>
+        </div>
+
+            <el-row :gutter="10" style="margin:15px">
+                <el-col :span="8">
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span>今日访客数</span>
+                        </div>
+                        <div class="text item">
+                            <p class="sumNum" v-html="statistics.toady_visitors"></p>
+                        </div>
+                        <div class="text item">
+                            <p>总访客数: <span  v-html="statistics.visitors"></span></p>
+                        </div>
+                    </el-card>
+                </el-col>
+                <el-col :span="8">
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span>今日消息数</span>
+                        </div>
+                        <div class="text item">
+                            <p class="sumNum" v-html="statistics.today_messages"></p>
+                        </div>
+                        <div class="text item">
+                            <p>总消息数: <span  v-html="statistics.message"></span></p>
+                        </div>
+                    </el-card>
+                </el-col>
+                <el-col :span="8">
+                    <el-card class="box-card">
+                        <div slot="header" class="clearfix">
+                            <span>当前访客在线数量</span>
+                        </div>
+                        <div class="text item">
+                            <p class="sumNum" v-html="statistics.visitor_session"></p>
+                        </div>
+                        <div class="text item">
+                            <p>当前客服会话: <span  v-html="statistics.kefu_session"></span></p>
+                        </div>
+                    </el-card>
+                </el-col>
+            </el-row>
+
+
+        <div class="guideStatistics" id="visitorNums" style="height:500px;"></div>
+    </template>
+</div>
+</body>
+<script src="https://cdn.staticfile.org/jquery/3.6.0/jquery.min.js"></script>
+<script src="/static/js/functions.js?v=1.0.0"></script>
+<script src="/static/js/echarts.min.js?v=1.0.0"></script>
+<script>
+    var LANG=checkLang();
+    new Vue({
+        el: '#app',
+        delimiters:["<{","}>"],
+        data: {
+            window:window,
+            host:getBaseUrl(),
+            kefuId:"",
+            entId:"",
+            nickname:"",
+            kefuName:"",
+            versionName:"",
+            lastTime:"",
+            ipAddress:"",
+            noticeContent:"",
+            versionCode:"",
+            visitorQrcode:"",
+            visitorUrl:"",
+            wechatUrl:"",
+            deployLink:"",
+            wechatQrcode:"",
+            wechatMenuUrl:"",
+            newsList:{
+                list:[],
+                count:0,
+                page:1,
+                pagesize:4,
+            },
+            statistics:{},
+            needUpdate:false,
+        },
+        methods: {
+            showStatistics(){
+                var _this=this;
+                sendAjax("/statistics","get",{},function(result) {
+                    _this.statistics = result.result;
+                });
+                sendAjax("/kefu/chartStatistics","get",{},function(data) {
+                    var result=data.result;
+                    var days=[];
+                    var nums=[];
+                    if(result.length<=0){
+                        return;
+                    }
+                    for(var i=result.length-1;i>=0;i--){
+                        days.push(result[i].day);
+                        nums.push(result[i].num)
+                    }
+
+                    // 基于准备好的dom，初始化echarts实例
+                    $(function () {
+                        var myChart = echarts.init($('#visitorNums')[0],null, {
+                            width: 1200,
+                            height: 500
+                        });
+                        // 指定图表的配置项和数据
+                        var option = {
+                            title: {
+                                text: '每日新增访客数量统计图'
+                            },
+                            tooltip: {},
+                            legend: {
+                                data: ['数量']
+                            },
+                            xAxis: {
+                                data: days
+                            },
+                            yAxis: {},
+                            series: [
+                                {
+                                    name: '数量',
+                                    type: 'bar',
+                                    data: nums,
+                                    barCategoryGap: '40%',
+                                },
+                                {
+                                    name: '数量',
+                                    type: 'line',
+                                    smooth: true,
+                                    data: nums,
+                                }
+                            ]
+                        };
+                        // 使用刚指定的配置项和数据显示图表。
+                        myChart.setOption(option);
+                    });
+                });
+            },
+            copyText(text){
+                copyText(text);
+                this.$message({
+                    message: "ok",
+                    type: 'success'
+                });
+            },
+            kefuInfo() {
+                var _this = this;
+                sendAjax("/kefu/kefuinfo","get",{},function (data) {
+                    if (data.code != 200) {
+                        window.location.href = "/login";
+                    } else {
+                        var result = data.result;
+                        _this.kefuId = result.id;
+                        _this.entId = result.ent_id;
+                        _this.kefuName = result.name;
+                        _this.nickname = result.nickname;
+                        _this.visitorUrl=_this.host+'/chatIndex?kefu_id='+result.name+'%26ent_id='+result.ent_id;
+                        _this.wechatUrl=_this.host+'/wechat/server/'+result.ent_id+'/'+result.name;
+                        _this.visitorQrcode=_this.host+"/kefu/qrcode?str="+_this.visitorUrl+"&token="+localStorage.getItem("token");
+                        _this.wechatMenuUrl=_this.host+'/wechatIndex?ent_id='+result.ent_id+'&kefu_id='+result.name;;
+                    }
+                });
+            },
+            getVersion(){
+                var _this=this;
+                sendAjax("/other/version","get",{},function(data){
+                    var result=data.result;
+                    _this.versionName=result.version_name;
+                    var nowCode=result.version_code;
+                    _this.versionCode=nowCode
+
+                });
+
+            },
+            getNews(page) {
+                var _this = this;
+                sendAjax("/other/news","get",{page:page,pagesize:this.newsList.pagesize},function(result){
+                    _this.newsList=result.result;
+                });
+            },
+            showNewsContent(item){
+                this.$alert(item.content, item.title, {
+                    dangerouslyUseHTMLString: true,
+                });
+            },
+            //处理tab切换
+            handleTabClick(tab, event){
+                let _this=this;
+                if(tab.name=="wechat"){
+                    sendAjax("/wechat/showQrcode","get",{entId:_this.entId,sceneName:_this.kefuName},function(result){
+                        if(result.code==200){
+                            _this.wechatQrcode=result.result.url
+                        }
+                    });
+                }
+            },
+        },
+        mounted:function(){
+        },
+        created: function () {
+            this.showStatistics();
+            this.kefuInfo();
+            this.getVersion();
+            this.getNews(1);
+        }
+    })
+</script>
+</html>

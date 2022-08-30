@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对话框</title>
+</head>
+<script>
+    (function(doc, win) {
+        var docEl = doc.documentElement,
+            resizeEvt = "orientationchange" in window ? "orientationchange" : "resize",
+            recalc = function() {
+                var clientWidth = docEl.clientWidth;
+                if (!clientWidth) return;
+                if (clientWidth >= 750) {
+                    docEl.style.fontSize = "100px";
+                } else {
+                    docEl.style.fontSize = 100 * (clientWidth / 750) + "px";
+                }
+            };
+
+        if (!doc.addEventListener) return;
+        recalc();
+        win.addEventListener(resizeEvt, recalc, false);
+    })(document, window);
+</script>
+<style>
+html{
+    webkit-text-size-adjust: none;
+    -ms-text-size-adjust: none;
+}
+.pannel{
+    background: #fbf9fe;
+    max-width: 800px;
+    width: 100%;
+    z-index: 1005;
+    position: relative;
+}
+.pannel .editor{
+    padding: .15rem .25rem;
+    align-items: center;
+    justify-content: space-between;
+    display: flex;
+}
+.pannel .editor:before {
+    content: '';
+    border-top: 1px solid #d9d9d9;
+    color: #d9d9d9;
+    height: 1px;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transform: scaleY(0.5);
+    -webkit-transform: scaleY(0.5);
+}
+.pannel .editor .inputArea {
+    background: #fff;
+    color: #333;
+    caret-color: #1AAD19;
+    font-size: .36rem;
+    padding: .2rem .1rem;
+    overflow-y: hidden;
+    outline: none;
+    word-wrap: break-word;
+    word-break: break-all;
+    height: .4rem;
+    width: 4.9rem;
+    transition: border-color .3s;
+    border-radius: .1rem;
+    border: none;
+    resize: none;
+}
+.pannel .editor .editorBtn{
+    display: block;
+    height: .65rem;
+    width: .65rem;
+}
+.pannel .editor .emotion{
+    background: url(../../images/icon__emotion.png) no-repeat;
+    background-size: cover;
+}
+.pannel .editor .choose{
+    background: url(../../images/icon__choose.png) no-repeat;
+    background-size: cover;
+}
+.pannel .editor .editorSubmit{
+    background: #1AAD19;
+    border: 0;
+    border-radius: .05rem;
+    color: #fff;
+    font-size: .3rem;
+    font-family: "Microsoft Yahei";
+    outline: none;
+    width: .9rem;
+    position: absolute;
+    right: .1rem;
+    bottom: .2rem;
+    height: .64rem;
+}
+
+</style>
+<body>
+<div class="pannel">
+    <div class="editor">
+        <textarea class="inputArea"></textarea>
+        <i class="editorBtn emotion"></i>
+        <i class="editorBtn choose"></i>
+        <button class="editorSubmit">发送</button>
+    </div>
+</div>
+</body>
+</html>

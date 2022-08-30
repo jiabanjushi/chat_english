@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>安装部署在线客服系统教程-在线客服系统-客服系统源码-GOFLY官网</title>
+    <meta name="keywords" content="在线客服系统,在线客服代码,客服系统源码,网页聊天工具,免费在线客服，开源在线客服,网站客服系统" />
+    <meta name="description" content="GOFLY客服,GO-FLY开源客服，一套可独立私有化部署的免费开源客服系统，网站在线客服系统，下载zip解压即可，仅依赖MySQL数据库，是一个开箱即用的网页在线客服，适合PHP程序员使用，同时也是首页完全可以编辑的单页营销系统." />
+
+    {{template "index-meta" .}}
+</head>
+<body class="main">
+
+{{template "index-nav" .}}
+<div class="container">
+    <div class="subTitle  margin-top90">
+        <h2 class="mb-2">安装部署</h2>
+        <p>宝塔部署/非宝塔部署</p>
+    </div>
+    <div class="product mainIntro">
+        <h3 class="pt-3 pb-3 mb-2">安装</h3>
+        授权得到压缩包后，参考以下步骤进行安装。
+        <h4 class="pt-3 pb-3 mb-2">环境要求</h4>
+        <p>
+            推荐使用Linux服务器(ubuntu)<br/>
+
+        </p>
+        <pre>
+硬件
+    基础阶段：1核 1G内存 1M带宽 50G硬盘（最低配置即可）
+    中级阶段：4核 8G内存 5M带宽 50G硬盘（有一定访问量）
+    高级阶段：8核 16G内存 10M带宽 50G硬盘（访问量比较大）
+软件
+    Mysql >= 5.6 (需支持innodb引擎)
+    Nginx
+        </pre>
+
+
+        <h4 class="pt-3 pb-3 mb-2">宝塔面板</h4>
+        <p>提前安装宝塔面板，宝塔面板可以很方便的配置域名、反向代理、数据库，所以建议安装一下。安装nginx，mysql数据库(5.6)。</p>
+        <p>
+        <img src="/static/images/install/mysql.jpg" class="productImg"/>
+        </p>
+        <h4 class="pt-3 pb-3 mb-2">创建数据库</h4>
+        <p>请记住设置的数据库名，用户名，密码</p>
+        <p>
+            <img src="/static/images/install/database.jpg" class="productImg"/>
+        </p>
+        <h4 class="pt-3 pb-3 mb-2">部署服务</h4>
+        <p>上传压缩包文件到服务器，比如上传到/www/wwwroot/go-fly-pro，给此目录的所有文件赋权限777</p>
+        <p>
+            <img src="/static/images/install/file.jpg" class="productImg"/>
+        </p>
+        <p>编辑config/mysql.json，修改为创建数据库时设置的数据库名，用户名，密码</p>
+        <p>
+            <img src="/static/images/install/config.jpg" class="productImg"/>
+        </p>
+        <p>进入终端，切换目录到/www/wwwroot/go-fly-pro</p>
+        <p class="miniTitle">cd /www/wwwroot/go-fly-pro</p>
+        <p>执行导入数据库命令,确保数据库配置信息正确，自动创建导入数据库相关表</p>
+        <p class="miniTitle">./go-fly-pro install</p>
+        <p>执行开启服务命令，监听端口,开启服务，-d为守护进程模式</p>
+        <p class="miniTitle">./go-fly-pro server -d</p>
+        <p>关闭服务，可以用ps -ef|grep go查看下进程是否存在，验证关闭成功</p>
+        <p class="miniTitle">./sh stop.sh ，这里如果关闭不成功，可以多执行几次</p>
+        <p>
+            <img src="/static/images/install/install.jpg" class="productImg"/>
+        </p>
+        <p>到宝塔安全页面将8081端口开放</p>
+        <p>
+            <img src="/static/images/install/port.jpg" class="productImg"/>
+        </p>
+        <p>如果是云服务器，则安全组也需要设置下让8081端口可以被外网访问。</p>
+        <p>访问外网地址: http://ip:8081/login</p>
+        <h4 class="pt-3 pb-3 mb-2">配置域名</h4>
+        <p>到宝塔网站页面=>添加站点</p>
+        <p>
+            <img src="/static/images/install/domain.jpg" class="productImg"/>
+        </p>
+        <p>设置反向代理，反代到客服程序监听的默认8081端口</p>
+        <p>
+            <img src="/static/images/install/fanxiang.jpg" class="productImg"/>
+        </p>
+        <p>增加支持websocket的反向代理参数</p>
+        <pre>
+            proxy_set_header Upgrade $http_upgrade;<br/>
+            proxy_set_header Connection "upgrade";
+        </pre>
+
+        <p>
+            <img src="/static/images/install/static.jpg" class="productImg"/>
+        </p>
+        <p>完整的配置文件（注意root路径和端口号，其他应该都不需要改动）</p>
+        <pre>
+#PROXY-START/
+
+location /
+{
+    root /www/wwwroot/go-fly-pro;
+   try_files $uri  @gofly;
+
+}
+location @gofly {
+    proxy_pass http://127.0.0.1:8081;
+    proxy_set_header Host $host;
+    proxy_set_header X-Real-IP $remote_addr;
+    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    proxy_set_header REMOTE-HOST $remote_addr;
+
+    add_header X-Cache $upstream_cache_status;
+    proxy_set_header Upgrade $http_upgrade;
+    proxy_set_header Connection "upgrade";
+
+    #Set Nginx Cache
+    add_header Cache-Control no-cache;
+}
+
+#PROXY-END/
+        </pre>
+        <h4 class="pt-3 pb-3 mb-2">配置HTTPS</h4>
+        <p>需要先暂停反向代理，才能去开启</p>
+        <p>
+            <img src="/static/images/install/ssl.jpg" class="productImg"/>
+        </p>
+        <p>需要先暂停反向代理，才能去开启</p>
+        <p>
+            <img src="/static/images/install/https.png" class="productImg"/>
+        </p>
+
+
+
+        <h4 class="pt-3 pb-3 mb-2">非宝塔部署</h4>
+        <p>ubuntu系统安装nginx</p>
+        <pre>
+apt-get install curl gnupg2 ca-certificates lsb-release
+echo "deb http://nginx.org/packages/ubuntu `lsb_release -cs` nginx" | tee /etc/apt/sources.list.d/nginx.list
+curl -fsSL https://nginx.org/keys/nginx_signing.key | apt-key add -
+apt-key fingerprint ABF5BD827BD9BF62
+apt-get update
+apt-get install nginx
+        </pre>
+        <p>centos系统安装nginx</p>
+        <p>vim 编辑 /etc/yum.repos.d/nginx.repo</p>
+        <pre>
+[nginx-stable]
+name=nginx stable repo
+baseurl=http://nginx.org/packages/centos/$releasever/$basearch/
+gpgcheck=1
+enabled=1
+gpgkey=https://nginx.org/keys/nginx_signing.key
+module_hotfixes=true
+        </pre>
+        <pre>
+yum install  nginx
+        </pre>
+        <p>配置nginx反向代理</p>
+        <pre>
+location /static { } 这里配置的是，访问静态资源的时候，直接nginx返回静态资源，就不用走到go后端服务了
+proxy_pass http://127.0.0.1:8081; 这里就是重点了，反向代理到后端8081端口
+下面这几句是传递真实IP到后端服务
+proxy_set_header X-Real-IP $remote_addr;
+升级连接成为websocket连接 ， 支持websocket
+proxy_set_header Upgrade $http_upgrade;
+proxy_set_header Connection "upgrade";
+        </pre>
+        <p>完整的nginx配置文件</p>
+<pre>
+server{
+       listen 80;
+        server_name  gofly.sopans.com;
+        access_log  /var/log/nginx/gofly.sopans.com.access.log  main;
+        location /
+        {
+            root /www/wwwroot/go-fly-pro;
+           try_files $uri  @gofly;
+
+        }
+        location @gofly {
+            proxy_pass http://127.0.0.1:8081;
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header REMOTE-HOST $remote_addr;
+
+            add_header X-Cache $upstream_cache_status;
+            proxy_set_header Upgrade $http_upgrade;
+            proxy_set_header Connection "upgrade";
+
+            #Set Nginx Cache
+            add_header Cache-Control no-cache;
+        }
+
+}
+</pre>
+        </p>
+
+
+        <h4 class="pt-3 pb-3 mb-2">分布式方案</h4>
+        <p>
+            目前为了减少依赖当前项目不支持分布式，但是可以有其他实现方案
+        </p>
+        <p>
+            因为无依赖部署很方便，所以可以按域名进行分布，比如kf1.sopans.com kf2.sopans.com ，部署到不同的机器上，都使用一个MySQL数据库。前端跳转到客服的时候，通过访客ID进行下分配策略
+        </p>
+        <p>
+            按地域分布，比如cn.sopans.com部署到国内机器， hk.sopans.com部署在香港，na.sopans.com 部署到北美，根据访客集中地区进行前端分配。
+        </p>
+    </div>
+</div>
+
+{{template "footer" .}}

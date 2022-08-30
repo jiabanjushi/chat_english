@@ -1,0 +1,16 @@
+windows版用户
+1. 首先需要自己手动创建mysql数据库
+2. 编辑config/mysql.json配置数据库连接信息
+3. 双击install.bat 安装，会自动导入数据库
+4. 双击start.bat 开启服务，黑窗口不能关闭，可以配置计划任务执行cron.bat守护执行
+5. 访问http://127.0.0.1:8081
+
+
+linux版用户
+1. 首先需要自己手动创建mysql数据库
+2. 编辑config/mysql.json配置数据库连接信息
+3. 运行./go-fly-pro install，会自动导入数据库
+4. 运行./go-fly-pro server -d 开启服务
+5. 访问http://127.0.0.1:8081
+
+默认用户名密码：kefu2/123  kefu3/123  kefu1/123
