@@ -41,7 +41,6 @@ func init() {
 	serverCmd.PersistentFlags().StringVarP(&rootPath, "rootPath", "r", "", "程序根目录")
 	serverCmd.PersistentFlags().StringVarP(&port, "port", "p", "8081", "监听端口号")
 	serverCmd.PersistentFlags().BoolVarP(&daemon, "daemon", "d", false, "是否为守护进程模式")
-
 }
 func run(cmd *cobra.Command, args []string) {
 	//初始化目录
