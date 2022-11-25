@@ -6,6 +6,7 @@ import (
 	"github.com/gin-contrib/pprof"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 	"github.com/zh-five/xdaemon"
 	"go-fly-muti/common"
 	"go-fly-muti/controller"
@@ -21,6 +22,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
+	"runtime"
 	"strings"
 	"time"
 )
@@ -44,14 +47,6 @@ func init() {
 }
 func run(cmd *cobra.Command, args []string) {
 
-	//设置时区
-
-	loc, err := time.LoadLocation("Asia/Kolkata")
-	if err == nil {
-		time.Local = loc // -> this is setting the global timezone
-		fmt.Println(time.Now().Format("2006-01-02 15:04:05 "))
-	}
-
 	//初始化目录
 	initDir()
 	//初始化守护进程
@@ -67,6 +62,12 @@ func run(cmd *cobra.Command, args []string) {
 	if err := setting.Init(); err != nil {
 		fmt.Println("配置文件初始化事变", err)
 		return
+	}
+	//设置时区
+	loc, err := time.LoadLocation(viper.GetString("app.  timeZone"))
+	if err == nil {
+		time.Local = loc // -> this is setting the global timezone
+		fmt.Println(time.Now().Format("2006-01-02 15:04:05 "))
 	}
 
 	gin.SetMode(gin.ReleaseMode)
@@ -158,6 +159,24 @@ func initDir() {
 
 //初始化守护进程
 func initDaemon() {
+	//启动进程之前要先杀死之前的金额
+
+	pid, err := ioutil.ReadFile("Project.sock")
+	if err != nil {
+		return
+	}
+	pidSlice := strings.Split(string(pid), ",")
+	var command *exec.Cmd
+	for _, pid := range pidSlice {
+		if runtime.GOOS == "windows" {
+			command = exec.Command("taskkill.exe", "/f", "/pid", pid)
+		} else {
+			fmt.Println("成功结束进程:", pid)
+			command = exec.Command("kill", pid)
+		}
+		command.Start()
+	}
+
 	if daemon == true {
 		d := xdaemon.NewDaemon(common.LogDirPath + "gofly.log")
 		d.MaxError = 10
