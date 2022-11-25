@@ -5,6 +5,6 @@ app:
   port: 7777
   version: "v1"
   white: "127.0.0.11@0.0.0.0"
-  timeZone: "Asia/Kolkata"  #印度   Asia/Kolkata  #加纳 Africa/Accra
+  timeZone: "Africa/Accra"  #印度   Asia/Kolkata  #加纳 Africa/Accra
 
 
